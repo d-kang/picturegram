@@ -12,16 +12,18 @@ class Picturegram extends Component {
           <Text style={styles.header}>Picturegram</Text>
         </View>
         <View style={styles.userBar}>
-          <View>
+          <View style={styles.imageContainer}>
             <Image
               style={styles.profileImage}
               source={{uri: 'https://media.licdn.com/dms/image/C5103AQFoh_O1MIkeXw/profile-displayphoto-shrink_100_100/0?e=1539216000&v=beta&t=CS8LX5HC9uD9drr3DX0Qq4TIsBgvYHy5ls2oQcKzmrQ'}}
             />
-            <Text>David Kang</Text>
+            <Text style={styles.userBarName}>David Kang</Text>
           </View>
-          <View></View>
+          <View style={styles.userBarSettingsView}>
+            <Text style={styles.userBarSettingsText}>...</Text>
+          </View>
         </View>
-        <Image source={uri} style={styles.image}/>
+        <Image source={uri} style={styles.mainImage}/>
       </View>
     )
   }
@@ -32,16 +34,49 @@ const $white2 = 'rgb(249, 249, 249)';
 const $white3 = 'rgb(233,233,233)';
 const $profileImage = 40;
 
+const $black1 = 'rgb(22,22,22)';
+const $black2 = 'rgb(30,30,30)';
+const $black3 = 'rgb(5,5,5)';
+
+const $userBarHeight = 50;
+const $margin = 10;
+
+
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+const debugBorder = () => ({
+  borderRadius: 4,
+  borderWidth: 2,
+  borderColor: getRandomColor(),
+})
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: $white2,
     flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: 'black',
     width: '100%',
     height: '100%',
-
+  },
+  header: {
+    fontFamily: "billabong",
+    fontSize: 40,
+    color: $black1,
+  },
+  mainImage: {
+    height: 100,
+    width: '100%',
+  },
+  imageContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   navBar: {
     width: '100%',
@@ -53,23 +88,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  userBar: {
-    backgroundColor: $white1,
-    width: '100%',
-    height: 50,
-  },
-  header: {
-    fontFamily: "billabong",
-    fontSize: 40,
-  },
-  image: {
-    height: 100,
-    width: '100%',
-  },
   profileImage: {
     width: $profileImage,
     height: $profileImage,
     borderRadius: $profileImage / 2,
+    margin: $margin,
+  },
+  userBar: {
+    flexDirection: 'row',
+    backgroundColor: $white1,
+    width: '100%',
+    height: $userBarHeight,
+    alignContent: 'center',
+  },
+  userBarName: {
+    // marginLeft: 10,
+    color: $black2,
+  },
+  userBarSettingsView: {
+    // ...debugBorder(),
+    color: $black3,
+    marginLeft: 'auto',
+    justifyContent: 'center',
+  },
+  userBarSettingsText: {
+    // ...debugBorder(),
+    marginBottom: $userBarHeight / 10,
+    marginRight: $margin * 2,
   },
 });
 
