@@ -6,10 +6,9 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { Icon, Avatar } from 'react-native-elements'
-import FAIcon from 'react-native-vector-icons/FontAwesome';
-console.log('===================================')
-console.log(`%c ${new Date().toLocaleTimeString()}`, 'color: green; font-size:15px;')
+import { Avatar } from 'react-native-elements'
+import SIcon from 'react-native-vector-icons/FontAwesome';
+import RIcon from 'react-native-vector-icons/FontAwesome5';
 
 
 const uri = "https://lh3.googleusercontent.com/Uvt8h7pXuPY2cO20ZmgpLxstrzLx43CwbO7xzOZnb34ed7cwshW7Y9af9mhqXeJ-Al4BwpHbEnIrxxbRqUGNmSAqsiA";
@@ -62,7 +61,6 @@ class Picturegram extends Component {
   imageHeight = Math.floor(this.state.screenWidth * 1.1)
   imageUri = `${uri}=s${this.imageHeight}-c`
   render() {
-    alert(JSON.stringify({ screenWidth: this.state.screenWidth, imageHeight: this.imageHeight, screenHeight: this.state.screenHeight, imageUri: this.imageUri}))
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
@@ -73,17 +71,8 @@ class Picturegram extends Component {
             Picturegram
           </Text>
 
-          <View
-            style={{
-              position: 'absolute',
-              right: 20,
-            }}
-          >
-            <Icon
-              type="font-awesome"
-              name='upload'
-              color={$black1}
-            />
+          <View style={{position: 'absolute', right: 20,}}>
+            <RIcon name="upload" size={20} color={$black1} />
           </View>
         </View>
         <View style={styles.userBar}>
@@ -113,6 +102,7 @@ class Picturegram extends Component {
         <View
           style={{
             backgroundColor: $white1,
+            height: $userBarHeight * 2 - 14,
           }}
         >
           <View
@@ -121,52 +111,43 @@ class Picturegram extends Component {
               alignSelf: 'center',
             }}
           >
-            <View style={styles.bottom1}>
-              <Icon
-                color="red"
-                reverseColor="blue"
-                type="font-awesome"
-                name="heart"
-
-              />
+            <View style={{flexDirection: 'row'}}>
+              <RIcon style={{paddingTop: 10, paddingRight: 10}} name="heart" size={30} color={$black1} />
+              <RIcon style={{padding: 10}} name="comment" size={30} color={$black1} />
+              <RIcon style={{padding: 10}} name="arrow-alt-circle-up" size={30} color={$black1} />
             </View>
 
             <View
               style={{
-                borderBottomColor: 'rgba(233,233,233,.3)',
+                borderBottomColor: 'rgba(233,233,233,.7)',
                 borderBottomWidth: StyleSheet.hairlineWidth,
               }}
             />
 
-            <View style={styles.bottom1}></View>
+            <View style={styles.likeCount}>
+              <SIcon style={{paddingRight: 10}} name="heart" size={15} color={$black1} />
+              <Text>128 Likes</Text>
+            </View>
           </View>
         </View>
 
 
-        <View style={styles.footer}></View>
+        <View style={styles.footer}>
+          <SIcon  name="home" size={30} color={$black1} />
+          <SIcon name="search" size={30} color={$black1} />
+          <RIcon name="camera" size={30} color={$black1} />
+          <RIcon  name="heart" size={30} color={$black1} />
+          <RIcon  name="user" size={30} color={$black1} />
+        </View>
 
       </View>
     )
   }
 }
 
-
-
-
-
-
-
 const styles = StyleSheet.create({
-  bottom1: {
-    // ...debug(),
-    height: ($userBarHeight / 2) + 10,
-  },
-  footer: {
-    // ...debug(),
-    height: $userBarHeight,
-    position: 'absolute',
-    width: '100%',
-    bottom: 0,
+  avatar: {
+    margin: $margin,
   },
   container: {
     backgroundColor: $white2,
@@ -174,20 +155,38 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  footer: {
+    height: $userBarHeight,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
   header: {
     fontFamily: "billabong",
     fontSize: 40,
     color: $black1,
-    // alignSelf: 'center',
   },
-  // mainImage: {
-  //   height: 425,
-
-  //   // width: '100%',
-  // },
+  heartIcon: {
+    height: 30,
+    width: 30,
+    backgroundColor: 'red',
+  },
+  commentIcon: {
+    height: 25,
+    width: 25,
+  },
+  dmIcon: {
+    height: 25,
+    width: 25,
+  },
   imageContainer: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  likeCount: {
+    paddingTop: 10,
+    flexDirection: 'row',
   },
   navBar: {
     flexDirection: 'row',
@@ -204,12 +203,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: $black1,
 
-  },
-  avatar: {
-    // width: $profileImage,
-    // height: $profileImage,
-    // borderRadius: $profileImage / 2,
-    margin: $margin,
   },
   userBar: {
     flexDirection: 'row',
