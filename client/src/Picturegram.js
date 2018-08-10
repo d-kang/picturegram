@@ -11,10 +11,7 @@ import { Avatar } from 'react-native-elements'
 import SIcon from 'react-native-vector-icons/FontAwesome';
 import RIcon from 'react-native-vector-icons/FontAwesome5';
 
-
 const uri = "https://lh3.googleusercontent.com/Uvt8h7pXuPY2cO20ZmgpLxstrzLx43CwbO7xzOZnb34ed7cwshW7Y9af9mhqXeJ-Al4BwpHbEnIrxxbRqUGNmSAqsiA";
-
-
 
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
@@ -31,8 +28,6 @@ const debug = () => ({
   borderColor: getRandomColor(),
 });
 
-
-
 const $white1 = 'rgb(255, 255, 255)';
 const $white2 = 'rgb(249, 249, 249)';
 const $white3 = 'rgb(233,233,233)';
@@ -48,6 +43,12 @@ const $margin = 10;
 
 
 class Picturegram extends Component {
+
+
+  DOUBLE_PRESS_DELAY = 300
+  imageHeight = Math.floor(this.state.screenWidth * 1.1)
+  imageUri = `${uri}=s${this.imageHeight}-c`
+
   state = {
     uri: {},
     screenWidth: Dimensions.get('window').width,
@@ -60,16 +61,22 @@ class Picturegram extends Component {
     alert('hello world!')
   }
 
+  handleImagePress = () => {
+    const now = new Date().getTime();
+
+    if (this.lastImagePress && (now - this.lastImagePress) < this.DOUBLE_PRESS_DELAY) {
+      delete this.lastImagePress
+      this.toggleLike();
+    }
+    else {
+      this.lastImagePress = now;
+    }
+  }
+
   toggleLike = () => {
-
-
-
     this.setState(prev => ({ like: !prev.like, likesCount: prev.like ? prev.likesCount - 1 : prev.likesCount + 1}))
   }
 
-
-  imageHeight = Math.floor(this.state.screenWidth * 1.1)
-  imageUri = `${uri}=s${this.imageHeight}-c`
   render() {
     return (
       <View style={styles.container}>
@@ -81,7 +88,7 @@ class Picturegram extends Component {
             Picturegram
           </Text>
 
-          <View style={{position: 'absolute', right: 20,}}>
+          <View style={{ position: 'absolute', right: 20, }}>
             <RIcon name="inbox" size={20} color={$black1} />
           </View>
         </View>
@@ -104,7 +111,7 @@ class Picturegram extends Component {
           </View>
         </View>
 
-        <TouchableOpacity onPress={this.toggleLike} activeOpacity={.7}>
+        <TouchableOpacity onPress={this.handleImagePress} activeOpacity={.7}>
           <Image
             source={{ uri: this.imageUri }}
             style={{
@@ -113,7 +120,6 @@ class Picturegram extends Component {
             }}
           />
         </TouchableOpacity>
-
 
         <View
           style={{
@@ -127,27 +133,26 @@ class Picturegram extends Component {
               alignSelf: 'center',
             }}
           >
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               {
                 this.state.like
                   ? <SIcon style={{ paddingTop: 10, paddingRight: 10 }} name="heart" size={30} color="rgb(246,68,93)" onPress={this.toggleLike} />
                   : <RIcon style={{ paddingTop: 10, paddingRight: 10 }} name="heart" size={30} color={$black1} onPress={this.toggleLike} />
               }
 
-
-              <RIcon style={{padding: 10}} name="comment" size={30} color={$black1} />
-              <RIcon style={{padding: 10}} name="arrow-alt-circle-up" size={30} color={$black1} />
+              <RIcon style={{ padding: 10 }} name="comment" size={30} color={$black1} />
+              <RIcon style={{ padding: 10 }} name="arrow-alt-circle-up" size={30} color={$black1} />
             </View>
 
             <View
               style={{
-                borderBottomColor: 'rgba(233,233,233,.7)',
+                borderBottomColor: $white3,
                 borderBottomWidth: StyleSheet.hairlineWidth,
               }}
             />
 
             <View style={styles.likeCount}>
-              <SIcon style={{paddingRight: 10}} name="heart" size={15} color={$black1} />
+              <SIcon style={{ paddingRight: 10 }} name="heart" size={15} color={$black1} />
               <Text>{this.state.likesCount} {this.state.likesCount > 1 ? 'Likes' : 'Like'}</Text>
             </View>
           </View>
@@ -155,11 +160,11 @@ class Picturegram extends Component {
 
 
         <View style={styles.footer}>
-          <SIcon  name="home" size={30} color={$black1} />
+          <SIcon name="home" size={30} color={$black1} />
           <SIcon name="search" size={30} color={$black1} />
           <RIcon name="camera" size={30} color={$black1} />
-          <RIcon  name="heart" size={30} color={$black1} />
-          <RIcon  name="user" size={30} color={$black1} />
+          <RIcon name="heart" size={30} color={$black1} />
+          <RIcon name="user" size={30} color={$black1} />
         </View>
 
       </View>
@@ -248,7 +253,6 @@ const styles = StyleSheet.create({
     top: -3,
   },
 });
-
 
 
 export default Picturegram;
