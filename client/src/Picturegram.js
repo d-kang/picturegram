@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import { Avatar } from 'react-native-elements'
 import SIcon from 'react-native-vector-icons/FontAwesome';
@@ -51,10 +52,19 @@ class Picturegram extends Component {
     uri: {},
     screenWidth: Dimensions.get('window').width,
     screenHeight: Dimensions.get('window').height,
+    like: false,
+    likesCount: 128,
   }
 
   foo = () => {
-    alert('hello world!!!')
+    alert('hello world!')
+  }
+
+  toggleLike = () => {
+
+
+
+    this.setState(prev => ({ like: !prev.like, likesCount: prev.like ? prev.likesCount - 1 : prev.likesCount + 1}))
   }
 
 
@@ -72,7 +82,7 @@ class Picturegram extends Component {
           </Text>
 
           <View style={{position: 'absolute', right: 20,}}>
-            <RIcon name="upload" size={20} color={$black1} />
+            <RIcon name="inbox" size={20} color={$black1} />
           </View>
         </View>
         <View style={styles.userBar}>
@@ -82,7 +92,7 @@ class Picturegram extends Component {
                 small
                 rounded
                 source={{ uri: 'https://media.licdn.com/dms/image/C5103AQFoh_O1MIkeXw/profile-displayphoto-shrink_100_100/0?e=1539216000&v=beta&t=CS8LX5HC9uD9drr3DX0Qq4TIsBgvYHy5ls2oQcKzmrQ' }}
-                onPress={() => alert("Works!")}
+                onPress={this.foo}
                 activeOpacity={0.7}
               />
             </View>
@@ -94,10 +104,16 @@ class Picturegram extends Component {
           </View>
         </View>
 
-        <Image source={{ uri: this.imageUri}} style={{
-          width: this.state.screenWidth,
-          height: this.imageHeight,
-        }}/>
+        <TouchableOpacity onPress={this.toggleLike} activeOpacity={.7}>
+          <Image
+            source={{ uri: this.imageUri }}
+            style={{
+              width: this.state.screenWidth,
+              height: this.imageHeight,
+            }}
+          />
+        </TouchableOpacity>
+
 
         <View
           style={{
@@ -112,7 +128,13 @@ class Picturegram extends Component {
             }}
           >
             <View style={{flexDirection: 'row'}}>
-              <RIcon style={{paddingTop: 10, paddingRight: 10}} name="heart" size={30} color={$black1} />
+              {
+                this.state.like
+                  ? <SIcon style={{ paddingTop: 10, paddingRight: 10 }} name="heart" size={30} color="rgb(246,68,93)" onPress={this.toggleLike} />
+                  : <RIcon style={{ paddingTop: 10, paddingRight: 10 }} name="heart" size={30} color={$black1} onPress={this.toggleLike} />
+              }
+
+
               <RIcon style={{padding: 10}} name="comment" size={30} color={$black1} />
               <RIcon style={{padding: 10}} name="arrow-alt-circle-up" size={30} color={$black1} />
             </View>
@@ -126,7 +148,7 @@ class Picturegram extends Component {
 
             <View style={styles.likeCount}>
               <SIcon style={{paddingRight: 10}} name="heart" size={15} color={$black1} />
-              <Text>128 Likes</Text>
+              <Text>{this.state.likesCount} {this.state.likesCount > 1 ? 'Likes' : 'Like'}</Text>
             </View>
           </View>
         </View>
@@ -161,6 +183,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+    borderTopColor: $white3,
+    borderTopWidth: StyleSheet.hairlineWidth,
   },
   header: {
     fontFamily: "billabong",
