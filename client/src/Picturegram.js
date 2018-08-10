@@ -1,33 +1,37 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+} from 'react-native';
+import { Icon, Avatar } from 'react-native-elements'
+import FAIcon from 'react-native-vector-icons/FontAwesome';
+console.log('===================================')
+console.log(`%c ${new Date().toLocaleTimeString()}`, 'color: green; font-size:15px;')
 
 
-class Picturegram extends Component {
+const uri = "https://lh3.googleusercontent.com/Uvt8h7pXuPY2cO20ZmgpLxstrzLx43CwbO7xzOZnb34ed7cwshW7Y9af9mhqXeJ-Al4BwpHbEnIrxxbRqUGNmSAqsiA";
 
-  render() {
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.navBar}>
-          <Text style={styles.header}>Picturegram</Text>
-        </View>
-        <View style={styles.userBar}>
-          <View style={styles.imageContainer}>
-            <Image
-              style={styles.profileImage}
-              source={{uri: 'https://media.licdn.com/dms/image/C5103AQFoh_O1MIkeXw/profile-displayphoto-shrink_100_100/0?e=1539216000&v=beta&t=CS8LX5HC9uD9drr3DX0Qq4TIsBgvYHy5ls2oQcKzmrQ'}}
-            />
-            <Text style={styles.userBarName}>David Kang</Text>
-          </View>
-          <View style={styles.userBarSettingsView}>
-            <Text style={styles.userBarSettingsText}>...</Text>
-          </View>
-        </View>
-        <Image source={uri} style={styles.mainImage}/>
-      </View>
-    )
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
   }
+  return color;
 }
+
+const debug = () => ({
+  borderRadius: 4,
+  borderWidth: 2,
+  borderColor: getRandomColor(),
+});
+
+
 
 const $white1 = 'rgb(255, 255, 255)';
 const $white2 = 'rgb(249, 249, 249)';
@@ -43,22 +47,127 @@ const $margin = 10;
 
 
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+class Picturegram extends Component {
+  state = {
+    uri: {},
+    screenWidth: Dimensions.get('window').width,
+    screenHeight: Dimensions.get('window').height,
   }
-  return color;
+
+  foo = () => {
+    alert('hello world!!!')
+  }
+
+
+  imageHeight = Math.floor(this.state.screenWidth * 1.1)
+  imageUri = `${uri}=s${this.imageHeight}-c`
+  render() {
+    alert(JSON.stringify({ screenWidth: this.state.screenWidth, imageHeight: this.imageHeight, screenHeight: this.state.screenHeight, imageUri: this.imageUri}))
+    return (
+      <View style={styles.container}>
+        <View style={styles.navBar}>
+          <Text
+            style={styles.header}
+            onPress={this.foo}
+          >
+            Picturegram
+          </Text>
+
+          <View
+            style={{
+              position: 'absolute',
+              right: 20,
+            }}
+          >
+            <Icon
+              type="font-awesome"
+              name='upload'
+              color={$black1}
+            />
+          </View>
+        </View>
+        <View style={styles.userBar}>
+          <View style={styles.imageContainer}>
+            <View style={styles.avatar}>
+              <Avatar
+                small
+                rounded
+                source={{ uri: 'https://media.licdn.com/dms/image/C5103AQFoh_O1MIkeXw/profile-displayphoto-shrink_100_100/0?e=1539216000&v=beta&t=CS8LX5HC9uD9drr3DX0Qq4TIsBgvYHy5ls2oQcKzmrQ' }}
+                onPress={() => alert("Works!")}
+                activeOpacity={0.7}
+              />
+            </View>
+
+            <Text style={styles.userBarName}>David Kang</Text>
+          </View>
+          <View style={styles.userBarSettingsView}>
+            <Text style={styles.userBarSettingsText}>...</Text>
+          </View>
+        </View>
+
+        <Image source={{ uri: this.imageUri}} style={{
+          width: this.state.screenWidth,
+          height: this.imageHeight,
+        }}/>
+
+        <View
+          style={{
+            backgroundColor: $white1,
+          }}
+        >
+          <View
+            style={{
+              width: '90%',
+              alignSelf: 'center',
+            }}
+          >
+            <View style={styles.bottom1}>
+              <Icon
+                color="red"
+                reverseColor="blue"
+                type="font-awesome"
+                name="heart"
+
+              />
+            </View>
+
+            <View
+              style={{
+                borderBottomColor: 'rgba(233,233,233,.3)',
+                borderBottomWidth: StyleSheet.hairlineWidth,
+              }}
+            />
+
+            <View style={styles.bottom1}></View>
+          </View>
+        </View>
+
+
+        <View style={styles.footer}></View>
+
+      </View>
+    )
+  }
 }
 
-const debugBorder = () => ({
-  borderRadius: 4,
-  borderWidth: 2,
-  borderColor: getRandomColor(),
-})
+
+
+
+
+
 
 const styles = StyleSheet.create({
+  bottom1: {
+    // ...debug(),
+    height: ($userBarHeight / 2) + 10,
+  },
+  footer: {
+    // ...debug(),
+    height: $userBarHeight,
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
+  },
   container: {
     backgroundColor: $white2,
     flex: 1,
@@ -69,16 +178,19 @@ const styles = StyleSheet.create({
     fontFamily: "billabong",
     fontSize: 40,
     color: $black1,
+    // alignSelf: 'center',
   },
-  mainImage: {
-    height: 100,
-    width: '100%',
-  },
+  // mainImage: {
+  //   height: 425,
+
+  //   // width: '100%',
+  // },
   imageContainer: {
     flexDirection: "row",
     alignItems: "center",
   },
   navBar: {
+    flexDirection: 'row',
     width: '100%',
     marginTop: 15,
     height: 56,
@@ -88,10 +200,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  profileImage: {
-    width: $profileImage,
-    height: $profileImage,
-    borderRadius: $profileImage / 2,
+  lineStyle: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: $black1,
+
+  },
+  avatar: {
+    // width: $profileImage,
+    // height: $profileImage,
+    // borderRadius: $profileImage / 2,
     margin: $margin,
   },
   userBar: {
@@ -99,25 +216,22 @@ const styles = StyleSheet.create({
     backgroundColor: $white1,
     width: '100%',
     height: $userBarHeight,
-    alignContent: 'center',
+    justifyContent: 'space-between',
   },
   userBarName: {
-    // marginLeft: 10,
     color: $black2,
   },
   userBarSettingsView: {
-    // ...debugBorder(),
     color: $black3,
-    marginLeft: 'auto',
-    justifyContent: 'center',
+    width: 40,
   },
   userBarSettingsText: {
-    // ...debugBorder(),
-    marginBottom: $userBarHeight / 10,
-    marginRight: $margin * 2,
+    fontSize: 30,
+    position: 'absolute',
+    top: -3,
   },
 });
 
-const uri = { uri: "https://firebasestorage.googleapis.com/v0/b/picturegram-a20ea.appspot.com/o/photo-1533764625214-b97671494f23.jpeg?alt=media&token=b5d36409-9d1d-4361-81eb-7b922bc875da" }
+
 
 export default Picturegram;
