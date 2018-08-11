@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Search from './Search';
 import Likes from './Likes';
 import Register from './Register';
+import Loading from './Loading';
 
 
 export {
@@ -15,4 +16,5 @@ export {
   Search,
   Likes,
   Register,
+  Loading,
 }
