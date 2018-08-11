@@ -44,10 +44,7 @@ export default class Register extends PureComponent {
             onChangeText={this.handleEmail}
             autoCapitalize="none"
             autoCorrect={false}
-
-
           />
-
 
           <FormLabel>Username</FormLabel>
           <FormInput
@@ -56,15 +53,11 @@ export default class Register extends PureComponent {
             autoCorrect={false}
           />
 
-
           <FormLabel>Password</FormLabel>
           <FormInput
             onChangeText={this.handlePassword}
             secureTextEntry
-            autoCapitalize="none"
-            autoCorrect={false}
           />
-
 
         </View>
 
