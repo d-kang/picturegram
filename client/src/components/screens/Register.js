@@ -7,20 +7,31 @@ import {
 } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
-import { debug } from '../../styles/vars';
-
 export default class Register extends PureComponent {
   state = {
-    input: '',
+    email: '',
+    username: '',
+    password: '',
+    error: false,
   }
-  login = () => {
-    this.props.navigation.navigate('login');
-  }
-  handleInput = (value) => {
-    this.setState(prev => ({ input: value }));
-  }
+  register = () => {
+    const { email, username, password } = this.state;
+    if (email && username && password) {
+      alert(JSON.stringify({email, username, password}))
 
-
+    } else {
+      this.setState(prev => ({ error: true }))
+    }
+  }
+  handleEmail = (value) => {
+    this.setState(prev => ({ email: value }));
+  }
+  handleUsername = (value) => {
+    this.setState(prev => ({ username: value }));
+  }
+  handlePassword = (value) => {
+    this.setState(prev => ({ password: value }));
+  }
 
   render() {
     return (
@@ -29,25 +40,43 @@ export default class Register extends PureComponent {
       >
         <View style={styles.formContainer}>
           <FormLabel>Email</FormLabel>
-          <FormInput onChangeText={this.handleInput} />
+          <FormInput
+            onChangeText={this.handleEmail}
+            autoCapitalize="none"
+            autoCorrect={false}
+
+
+          />
+
+
           <FormLabel>Username</FormLabel>
-          <FormInput onChangeText={this.handleInput} />
+          <FormInput
+            onChangeText={this.handleUsername}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+
+
           <FormLabel>Password</FormLabel>
-          <FormInput onChangeText={this.handleInput} />
+          <FormInput
+            onChangeText={this.handlePassword}
+            secureTextEntry
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+
+
         </View>
+
+        {
+          this.state.error && <FormValidationMessage>{'Missing Field'}</FormValidationMessage>
+        }
         <Button
-          onPress={this.login}
+          onPress={this.register}
           title="Register"
           color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+          accessibilityLabel="Register"
         />
-        <Button
-          onPress={this.login}
-          title="Already a member? Login"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        <Text>{this.state.input}</Text>
       </View>
     )
   }
