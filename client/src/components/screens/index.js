@@ -4,6 +4,7 @@ import Camera from './Camera';
 import Profile from './Profile';
 import Search from './Search';
 import Likes from './Likes';
+import Register from './Register';
 
 
 export {
@@ -13,4 +14,5 @@ export {
   Profile,
   Search,
   Likes,
+  Register,
 }

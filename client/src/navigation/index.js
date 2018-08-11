@@ -1,7 +1,24 @@
-import Tabs from './Tabs.js';
-import MainStack from './MainStack.js';
+import React from 'react';
 
-export {
-  Tabs,
-  MainStack,
-}
+import {
+  SwitchNavigator,
+  StackNavigator,
+} from 'react-navigation';
+
+
+import Tabs from './Tabs';
+import LoginStack from './LoginStack';
+
+import {
+  Login,
+  MainFeed,
+  Register,
+} from '../components/screens';
+
+
+const MainStack = SwitchNavigator({
+  login: LoginStack,
+  main: Tabs,
+});
+
+export default MainStack;

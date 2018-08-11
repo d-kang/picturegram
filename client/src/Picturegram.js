@@ -4,9 +4,7 @@ import {
   Text,
 } from 'react-native';
 
-import {
-  MainStack,
-} from './navigation';
+import MainStack from './navigation';
 
 class Picturegram extends Component {
 

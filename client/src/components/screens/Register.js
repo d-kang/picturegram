@@ -9,19 +9,18 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 
 import { debug } from '../../styles/vars';
 
-export default class Login extends PureComponent {
+export default class Register extends PureComponent {
   state = {
     input: '',
   }
   login = () => {
-    this.props.navigation.navigate('main');
+    this.props.navigation.navigate('login');
   }
   handleInput = (value) => {
     this.setState(prev => ({ input: value }));
   }
-  register =() => {
-    this.props.navigation.navigate('register');
-  }
+
+
 
   render() {
     return (
@@ -29,6 +28,8 @@ export default class Login extends PureComponent {
         style={styles.container}
       >
         <View style={styles.formContainer}>
+          <FormLabel>Email</FormLabel>
+          <FormInput onChangeText={this.handleInput} />
           <FormLabel>Username</FormLabel>
           <FormInput onChangeText={this.handleInput} />
           <FormLabel>Password</FormLabel>
@@ -36,13 +37,13 @@ export default class Login extends PureComponent {
         </View>
         <Button
           onPress={this.login}
-          title="Login"
+          title="Register"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
         <Button
-          onPress={this.register}
-          title="Register"
+          onPress={this.login}
+          title="Already a member? Login"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
