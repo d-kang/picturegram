@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 
 
-export default class Login extends PureComponent {
+export default class Camera extends PureComponent {
 
-  login = () => {
+  camera = () => {
     this.props.navigation.navigate('main');
   }
 
@@ -19,9 +19,9 @@ export default class Login extends PureComponent {
         style={styles.container}
       >
         <TouchableOpacity
-          onPress={this.login}
+          onPress={this.camera}
         >
-          <Text>LOGIN PAGE</Text>
+          <Text>Camera PAGE</Text>
         </TouchableOpacity>
       </View>
     )

@@ -7,7 +7,7 @@ import {
 import RIcon from 'react-native-vector-icons/FontAwesome5';
 import vars from '../../styles/vars'
 
-class Header extends Component {
+export default class Header extends Component {
 
   render() {
     return (
@@ -41,6 +41,3 @@ const styles = StyleSheet.create({
   },
 
 });
-
-
-export default Header;

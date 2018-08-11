@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 
 
-export default class Login extends PureComponent {
+export default class Profile extends PureComponent {
 
-  login = () => {
+  profile = () => {
     this.props.navigation.navigate('main');
   }
 
@@ -19,9 +19,9 @@ export default class Login extends PureComponent {
         style={styles.container}
       >
         <TouchableOpacity
-          onPress={this.login}
+          onPress={this.profile}
         >
-          <Text>LOGIN PAGE</Text>
+          <Text>Profile PAGE</Text>
         </TouchableOpacity>
       </View>
     )

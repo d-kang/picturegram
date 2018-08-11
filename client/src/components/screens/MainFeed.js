@@ -8,7 +8,7 @@ import { Header, Footer } from '../presentation';
 import { PostFeed } from '../container';
 import vars from '../../styles/vars'
 
-class MainFeed extends Component {
+export default class MainFeed extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default MainFeed;
+

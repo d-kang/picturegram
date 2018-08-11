@@ -7,7 +7,7 @@ import SIcon from 'react-native-vector-icons/FontAwesome';
 import RIcon from 'react-native-vector-icons/FontAwesome5';
 import vars from '../../styles/vars'
 
-class Footer extends Component {
+export default class Footer extends Component {
 
   render() {
     return (
@@ -35,6 +35,3 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
   },
 });
-
-
-export default Footer;
