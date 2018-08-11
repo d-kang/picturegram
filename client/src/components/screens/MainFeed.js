@@ -4,7 +4,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Header, Footer } from '../presentation';
+import { Header } from '../presentation';
 import { PostFeed } from '../container';
 import vars from '../../styles/vars'
 
@@ -14,7 +14,6 @@ export default class MainFeed extends Component {
       <View style={styles.container}>
         <Header />
         <PostFeed />
-        <Footer />
       </View>
     )
   }
