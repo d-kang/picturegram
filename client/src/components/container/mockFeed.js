@@ -8,6 +8,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "babyanimalshd",
     "avatar": "https://scontent-lax3-1.cdninstagram.com/vp/c5f2ad7d768047df4081ef36fcefd375/5C106C0C/t51.2885-19/s150x150/12965754_944532972328919_1624096687_a.jpg",
+    liked: false,
   },
 
   {
@@ -19,6 +20,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/308459fb867ffdbfe2a6db8395c7a4d2/5C0C01CB/t51.2885-15/e35/37945379_438016723377361_7376203772185280512_n.jpg",
     "handle": "sophia_thefrenchie",
     "avatar": "https://scontent-lax3-1.cdninstagram.com/vp/2bc4dd66e6daee41a9e53eccc4cdccd1/5BEEA940/t51.2885-19/s150x150/33113490_2173462929553908_5306668046826340352_n.jpg",
+    liked: false,
   },
 
 
@@ -31,6 +33,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/f1b60c9270ba00820a15b3aaa76ee61e/5BF7A250/t51.2885-15/e35/38236164_262256421170447_4298288577030127616_n.jpg",
     "handle": "adventures_of_lily_the_lab",
     "avatar": "https://scontent-lax3-1.cdninstagram.com/vp/6360d7adaa6c56d85f78e3662ce0d7ae/5C0795C5/t51.2885-19/s150x150/28753338_152334175583742_4367730450085445632_n.jpg",
+    liked: false,
   },
   {
     "id": "1157179863266871229",
@@ -41,6 +44,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1126293663140399053",
@@ -51,6 +55,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1117418173361145365",
@@ -61,6 +66,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1162418651480049646",
@@ -71,6 +77,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1152964002473690553",
@@ -81,6 +88,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1150824171912152320",
@@ -91,6 +99,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1149382879529256679",
@@ -101,6 +110,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1147180903383025596",
@@ -111,6 +121,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1143535906423162226",
@@ -121,6 +132,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1141561999742846119",
@@ -131,6 +143,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1137894817632733056",
@@ -141,6 +154,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1136932306813044281",
@@ -151,6 +165,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1136502965197194931",
@@ -161,6 +176,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1135147611821557699",
@@ -171,6 +187,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1132002270913873708",
@@ -181,6 +198,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1128590547628442978",
@@ -191,6 +209,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1128237044221461933",
@@ -201,6 +220,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1127804966031967265",
@@ -211,6 +231,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1125735850454402958",
@@ -221,6 +242,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1122810327591928991",
@@ -231,6 +253,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   },
   {
     "id": "1118481761857291950",
@@ -241,6 +264,7 @@ const data = [
     "display_src": "https://scontent-lax3-1.cdninstagram.com/vp/7d808908cc6d169dca272c293990a7c5/5BF93C33/t51.2885-15/e35/38258088_244030262894850_1142910081868759040_n.jpg",
     "handle": "",
     "avatar": "",
+    liked: false,
   }
 ];
 export default data;
