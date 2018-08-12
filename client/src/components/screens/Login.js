@@ -30,7 +30,11 @@ export default class Login extends PureComponent {
       >
         <View style={styles.formContainer}>
           <FormLabel>Username</FormLabel>
-          <FormInput onChangeText={this.handleInput} />
+          <FormInput
+            onChangeText={this.handleInput}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
           <FormLabel>Password</FormLabel>
           <FormInput onChangeText={this.handleInput} />
         </View>
