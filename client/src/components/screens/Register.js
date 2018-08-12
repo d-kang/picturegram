@@ -48,13 +48,8 @@ export default class Register extends PureComponent {
 
         })
           .then(() => {
-
             var displayName = user.displayName;
-            alert(displayName);
-
             var photoURL = user.photoURL;
-            alert(photoURL);
-
           }, error => {
             alert(error.message);
           });

@@ -41,12 +41,17 @@ const Tabs = createBottomTabNavigator(
         };
 
         const iconName = icons[routeName];
-        return <SIcon name={iconName} size={30} color={vars.$black1} />;
+        return <SIcon
+          name={iconName}
+          size={30}
+          color={tintColor}
+        />;
       },
     }),
     tabBarOptions: {
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
+      activeTintColor: 'rgb(36,36,36)',
+      inactiveTintColor: 'rgb(165,165,165)',
+      showLabel: false,
     },
   }
 )

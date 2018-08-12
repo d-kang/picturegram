@@ -37,13 +37,11 @@ export default class Login extends PureComponent {
         <Button
           onPress={this.login}
           title="Login"
-          color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
         <Button
           onPress={this.register}
-          title="Register"
-          color="#841584"
+          title="Don't have an account? Sign Up"
           accessibilityLabel="Learn more about this purple button"
         />
         <Text>{this.state.input}</Text>
