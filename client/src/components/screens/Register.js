@@ -18,7 +18,7 @@ export default class Register extends PureComponent {
     error: false,
   }
 
-  register = () => {
+  handleRegister = () => {
     const { email, username, password } = this.state;
     if (email && username && password) {
 
@@ -56,8 +56,6 @@ export default class Register extends PureComponent {
       }
     });
   }
-
-
 
   handleEmail = (value) => {
     this.setState(prev => ({ email: value }));
@@ -101,7 +99,7 @@ export default class Register extends PureComponent {
           this.state.error && <FormValidationMessage>{'Missing Field'}</FormValidationMessage>
         }
         <Button
-          onPress={this.register}
+          onPress={this.handleRegister}
           title="Sign Up"
           accessibilityLabel="Register"
         />

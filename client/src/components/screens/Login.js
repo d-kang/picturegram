@@ -6,20 +6,36 @@ import {
   Text,
 } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
-
-import { debug } from '../../styles/vars';
+import firebase from 'firebase';
 
 export default class Login extends PureComponent {
   state = {
-    input: '',
+    email: '',
+    password: '',
+
   }
-  login = () => {
-    this.props.navigation.navigate('main');
+
+  handleEmail = (value) => {
+    this.setState(prev => ({ email: value }));
   }
-  handleInput = (value) => {
-    this.setState(prev => ({ input: value }));
+
+  handlePassword = (value) => {
+    this.setState(prev => ({ password: value }));
   }
-  register =() => {
+
+  handleLogin = () => {
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.props.navigation.navigate('main')
+      })
+      .catch(err => alert(`${err.message}`));
+  }
+
+
+  goToRegister =() => {
     this.props.navigation.navigate('register');
   }
 
@@ -29,22 +45,25 @@ export default class Login extends PureComponent {
         style={styles.container}
       >
         <View style={styles.formContainer}>
-          <FormLabel>Username</FormLabel>
+          <FormLabel>Email</FormLabel>
           <FormInput
-            onChangeText={this.handleInput}
+            onChangeText={this.handleEmail}
             autoCapitalize="none"
             autoCorrect={false}
           />
           <FormLabel>Password</FormLabel>
-          <FormInput onChangeText={this.handleInput} />
+          <FormInput
+            onChangeText={this.handlePassword}
+            secureTextEntry
+          />
         </View>
         <Button
-          onPress={this.login}
+          onPress={this.handleLogin}
           title="Login"
           accessibilityLabel="Learn more about this purple button"
         />
         <Button
-          onPress={this.register}
+          onPress={this.goToRegister}
           title="Don't have an account? Sign Up"
           accessibilityLabel="Learn more about this purple button"
         />
