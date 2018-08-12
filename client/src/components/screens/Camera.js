@@ -11,22 +11,27 @@ import {
   Image,
   Dimensions,
   ScrollView,
+  AppRegistry,
+  TouchableOpacity,
 } from 'react-native'
 
 import RNFetchBlob from 'rn-fetch-blob';
 
+import { RNCamera } from 'react-native-camera';
+import { debug } from '../../styles/vars';
+
 import firebase from 'firebase';
 
-let styles
 const { width } = Dimensions.get('window')
 
-class App extends React.Component {
+export default class Camera extends React.Component {
   static navigationOptions = {
     title: 'Camera Roll App'
   }
 
   state = {
     modalVisible: false,
+    modalVisible2: false,
     photos: [],
     index: null
   }
@@ -49,48 +54,50 @@ class App extends React.Component {
   toggleModal = () => {
     this.setState({ modalVisible: !this.state.modalVisible });
   }
-
-  navigate = () => {
-    const { navigate } = this.props.navigation
-    navigate('ImageBrowser')
+  toggleModal2 = () => {
+    this.setState({ modalVisible2: !this.state.modalVisible2 });
   }
 
-  share = () => {
-    const image = this.state.photos[this.state.index].node.image.uri;
+  takePicture = async () => {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options)
+      this.share(null, data.uri);
+    }
+  };
 
+  share = (_, image) => {
+    image = image || this.state.photos[this.state.index].node.image.uri;
+    console.log('image: ', image);
     const Blob = RNFetchBlob.polyfill.Blob;
     const fs = RNFetchBlob.fs;
     window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
     window.Blob = Blob
     let uploadBlob = null;
     const imageRef = firebase.storage().ref('posts').child("test.jpg");
+    // ** change test.jpg. maybe use time, user info.
+    // ** image: assets-library://asset/asset.JPG?id=99D53A1F-FEEF-40E1-8BB3-7DD55A43C8B7&ext=JPG
+    // ** look up best practice
     let mime = 'image/jpg';
-
-    console.log(0)
 
     fs.readFile(image, 'base64')
       .then((data) => {
-        console.log(1)
         return Blob.build(data, { type: `${mime};BASE64` })
       })
       .then((blob) => {
-        console.log('blob: ', blob);
-        console.log(2)
         uploadBlob = blob;
-        return imageRef.put(blob, { contentType: mime })
+        console.log('uploadBlob: ', uploadBlob);
+        return imageRef.put(blob, { contentType: mime }) // saving to firebase
       })
       .then(() => {
-        console.log(3)
         uploadBlob.close()
         return imageRef.getDownloadURL()
       })
       .then((url) => {
-        console.log(4)
         // URL of the image uploaded on Firebase storage
         console.log('CAMERA SUCCESS:::', { url });
       })
       .catch((error) => {
-        console.log(5)
         console.log('CAMERA ERROR:::', {error});
       });
   }
@@ -101,10 +108,6 @@ class App extends React.Component {
         <Button
           title='View Photos'
           onPress={() => { this.toggleModal(); this.getPhotos() }}
-        />
-        <Button
-          title='Browse Images'
-          onPress={this.navigate}
         />
         <Modal
           animationType={"slide"}
@@ -152,12 +155,44 @@ class App extends React.Component {
             }
           </View>
         </Modal>
+
+
+        <Button
+          title='Open Camera'
+          onPress={() => { this.toggleModal2();}}
+        />
+        <Modal
+          visible={this.state.modalVisible2}
+        >
+          <View style={styles.container2}>
+            <RNCamera
+              ref={ref => { this.camera = ref }}
+              style={styles.preview}
+              type={RNCamera.Constants.Type.front}
+              flashMode={RNCamera.Constants.FlashMode.on}
+              permissionDialogTitle={'Permission to use camera'}
+              permissionDialogMessage={'We need your permission to use your camera phone'}
+            />
+            <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
+              <TouchableOpacity
+                onPress={this.takePicture}
+                style={styles.capture}
+              >
+                <Text style={{ fontSize: 14 }}> SNAP </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <Button
+            title='Close'
+            onPress={this.toggleModal2}
+          />
+        </Modal>
       </View>
     )
   }
 }
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -177,7 +212,27 @@ styles = StyleSheet.create({
     padding: 10,
     bottom: 0,
     left: 0
+  },
+
+  container2: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'black',
+  },
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: 'red',
+  },
+  capture: {
+    flex: 0,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    padding: 15,
+    paddingHorizontal: 20,
+    alignSelf: 'center',
+    margin: 20,
   }
 })
 
-export default App

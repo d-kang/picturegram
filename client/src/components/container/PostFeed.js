@@ -60,7 +60,6 @@ export default class PostFeed extends Component {
   );
 
   render() {
-    console.log('Feed render')
     return (
       <FlatList
         data={this.state.data}
