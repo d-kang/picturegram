@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node ./dist",
+    "dev": "nodemon ./ --exec babel-node",
+    "build": "babel ./ -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.56",
+    "@babel/node": "^7.0.0-beta.56",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "dotenv": "^6.0.0"
+  },
+  "dependencies": {
+    "apollo-server": "^2.0.0",
+    "graphql": "^0.13.2",
+    "firebase": "^5.3.1"
+  }
+}
