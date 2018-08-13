@@ -6,7 +6,20 @@
   "scripts": {
     "start": "NODE_ENV=production node ./dist",
     "dev": "nodemon ./ --exec babel-node",
-    "build": "babel ./ -d dist"
+    "build": "babel ./ -d dist --ignore 'node_modules'",
+
+    "deploy": "yarn predeploy && firebase deploy",
+    "deploy:functions": "firebase deploy --only functions",
+
+    "predeploy": "yarn package:functions",
+    "format": "prettier --write 'firebaseFunctions/**/*{.js, .json}' && sort-package-json",
+    "postinstall": "cd firebaseFunctions && yarn",
+    "prepackage:functions": "rimraf 'dist/functions'",
+    "package:functions": "babel 'functions' --out-dir 'dist/functions' --presets=env --copy-files --ignore 'node_modules'",
+    "postpackage:functions": "cd 'dist/functions' && yarn",
+    "preserve": "yarn package:functions",
+    "serve": "firebase serve",
+    "serve:functions": "firebase serve --only functions"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +34,8 @@
   },
   "dependencies": {
     "apollo-server": "^2.0.0",
+    "firebase": "^5.3.1",
     "graphql": "^0.13.2",
-    "firebase": "^5.3.1"
+    "rimraf": "^2.6.2"
   }
 }
