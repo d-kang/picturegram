@@ -2,14 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>NSCameraUsageDescription</key>
-  <string>Allow Camera Access to Picturegram</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow Camera Access to Picturegram</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>View Camera Roll</string>
-  <key>NSMicrophoneUsageDescription</key>
-  <string>Allow Microphone Access to Picturegram</string>
-  <key>NSPhotoLibraryAddUsageDescription</key>
-  <string>Allow Camera Roll Access to Picturegram</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow Microphone Access to Picturegram</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Allow Camera Roll Access to Picturegram</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
